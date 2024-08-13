@@ -13,13 +13,14 @@ module.exports = {
     },
     devtool: 'source-map',
     devServer: {
-        proxy: {
-            '/api/**': {
+        proxy: [
+            {
+                context: ['/api'],
                 target: 'http://localhost:8080/',
                 secure: false,
                 changeOrigin: true
             }
-        },
+        ],
         // Use 'static' instead of 'contentBase'
         static: {
             directory: path.join(__dirname, 'dist'),
@@ -62,3 +63,5 @@ module.exports = {
         extensions: ['.js', '.jsx'],
     }
 };
+
+/////////webpack3
